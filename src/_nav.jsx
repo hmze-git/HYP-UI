@@ -93,7 +93,7 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Upload Vide',
+    name: 'Upload Video',
     to: '/vidUpload',
     icon: <CIcon icon={cilDataTransferUp} customClassName="nav-icon" />,
   },

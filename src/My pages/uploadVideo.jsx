@@ -60,7 +60,9 @@ import avatar5 from 'src/assets/images/avatars/5.jpg'
 import avatar6 from 'src/assets/images/avatars/6.jpg'
 
 import { useState,useEffect } from 'react'
-
+import api from '../services/api'
+import Swal from 'sweetalert2'
+import { data } from 'autoprefixer'
 
 
 const UploadVideo = () => {
@@ -85,6 +87,52 @@ const handleVideo=(e)=>{
     }
 }
 
+const submitVideo = async ()=>{
+    try {
+        const vidData=new FormData();
+ 
+        vidData.append('file',videoToClassify);
+        vidData.append('pipeline',selectedPipeline);
+          Swal.fire({
+            title:"Uploading Video",
+            text:"Please Wait While Your Video Is Processed",
+            allowOutsideClick:false,
+            allowEscapeKey:false,
+            didOpen:()=>{
+                Swal.showLoading()
+          
+            }
+
+    
+        })
+        
+        const resp=await api.post('video/upload',vidData);
+
+      
+            if(resp.data.success===false){
+                  
+        Swal.fire({
+                title:"Video Upload Failed",
+                text:`Accident was classified as ${data.AType}`,
+                icon:'error'
+        })
+            }else{
+                       Swal.fire({
+                title:"Video Upload Complete",
+                text:`Accident was classified as ${resp.data.AType}`,
+                icon:'success'
+        })
+
+            }
+
+
+    } catch (error) {
+        console.log("ERR uploading ",error)
+        
+    }
+
+
+}
 
 
     return(
@@ -133,7 +181,7 @@ const handleVideo=(e)=>{
                 </CRow>
 
               <CCardFooter className='d-flex justify-content-end'>
-                    <CButton color='dark' default={false} >
+                    <CButton color='dark' default={false} onClick={submitVideo}>
                         Submit
                     </CButton>
 
