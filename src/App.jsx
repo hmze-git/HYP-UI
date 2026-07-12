@@ -30,7 +30,8 @@ import Login from './views/pages/login/Login'
 import Register from './views/pages/register/Register'
 import Page404 from './views/pages/page404/Page404'
 import Page500 from './views/pages/page500/Page500'
-import Dashboard from './views/dashboard/Dashboard'
+import Dashboard from './views/dashboard/Dashboard' 
+import UploadVideo from './My pages/uploadVideo'
 
 /**
  * Main Application Component
@@ -55,7 +56,11 @@ import Dashboard from './views/dashboard/Dashboard'
  * ReactDOM.render(<App />, document.getElementById('root'))
  */
 const App = () => {
+ const { setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
 
+  useEffect(() => {
+    setColorMode('light')
+  }, [])
 
   return (
     <BrowserRouter>
@@ -67,6 +72,7 @@ const App = () => {
           <Route path='/' element={<DefaultLayout />} >
             <Route index element={<Navigate to="dashboard" replace/>}/>
             <Route path="dashboard" element={<Dashboard/>}/>
+            <Route path="vidUpload" element={<UploadVideo/>}/>
 
             
 

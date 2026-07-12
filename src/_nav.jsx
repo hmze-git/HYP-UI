@@ -89,12 +89,12 @@ const _nav = [
   },
   {
     component: CNavTitle,
-    name: 'Processing',
+    name: 'Prediction',
   },
   {
     component: CNavItem,
-    name: 'Upload',
-    to: '/uploading',
+    name: 'Upload Vide',
+    to: '/vidUpload',
     icon: <CIcon icon={cilDataTransferUp} customClassName="nav-icon" />,
   },
 
