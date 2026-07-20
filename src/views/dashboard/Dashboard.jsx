@@ -54,6 +54,7 @@ import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
 import MainChart from './MainChart'
 import api from '../../services/api'
+import HeatMap from '../../My pages/MyComponents/HeatMap'
 
 const Dashboard = () => {
 
@@ -113,6 +114,27 @@ const Dashboard = () => {
           </CRow>
           <MainChart major={majorAccidentData} moderate={moderateAccidentData} minor={minorAccidentDat} label={lineData}  />
         </CCardBody>
+
+        
+      </CCard>
+
+        <CCard className="mb-4">
+        <CCardBody>
+            <CRow>
+            <CCol sm={5}>
+              <h4 id="traffic" className="card-title mb-0">
+                Heatmap of accident hotspots (Severity And Frequency)
+              </h4>
+              <div className="small text-body-secondary">January - July 2026</div>
+            </CCol>
+          </CRow>
+          <CRow style={{height:"70vh"}}>
+          <HeatMap/>
+          </CRow>
+          
+        </CCardBody>
+
+        
       </CCard>
     </>
   )
