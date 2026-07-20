@@ -27,6 +27,7 @@ import {
   cilStar,
   cilHouse,
   cilDataTransferUp,
+  cilBarChart
 } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -96,6 +97,12 @@ const _nav = [
     name: 'Upload Video',
     to: '/vidUpload',
     icon: <CIcon icon={cilDataTransferUp} customClassName="nav-icon" />,
+  },
+    {
+    component: CNavItem,
+    name: 'Metrics',
+    to: '#',
+    icon: <CIcon icon={cilBarChart} customClassName="nav-icon" />,
   },
 
 
