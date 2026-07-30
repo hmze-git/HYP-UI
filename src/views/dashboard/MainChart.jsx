@@ -74,7 +74,7 @@ const MainChart = ({major,moderate,minor,label}) => {
           maintainAspectRatio: false,
           plugins: {
             legend: {
-              display: false,
+              display: true,
             },
           },
           scales: {

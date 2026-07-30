@@ -59,7 +59,7 @@ import HeatMap from '../../My pages/MyComponents/HeatMap'
 const Dashboard = () => {
 
   const [majorAccidentData,setMajorAccidentData]=useState([])
-  const [minorAccidentDat,setMinorAccidentData]=useState([])
+  const [minorAccidentData,setMinorAccidentData]=useState([])
   const [moderateAccidentData,setModerateAccidentData]=useState([])
 
   useEffect(()=>{
@@ -76,7 +76,7 @@ const Dashboard = () => {
     try {
       
 
-      const data=await api.get('video/severity/metrics',{params:{year:'2026'}})
+      const data=await api.get('classification/severity/metrics',{params:{year:'2026'}})
 
       if (data.data.success===true){
 
@@ -112,7 +112,7 @@ const Dashboard = () => {
               <div className="small text-body-secondary">January - July 2026</div>
             </CCol>
           </CRow>
-          <MainChart major={majorAccidentData} moderate={moderateAccidentData} minor={minorAccidentDat} label={lineData}  />
+          <MainChart major={majorAccidentData} moderate={moderateAccidentData} minor={minorAccidentData} label={lineData}  />
         </CCardBody>
 
         
