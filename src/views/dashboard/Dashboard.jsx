@@ -61,11 +61,13 @@ const Dashboard = () => {
   const [majorAccidentData,setMajorAccidentData]=useState([])
   const [minorAccidentData,setMinorAccidentData]=useState([])
   const [moderateAccidentData,setModerateAccidentData]=useState([])
+  const [heatPoints,setHeatPoints]=useState([])
 
   useEffect(()=>{
 
 
   fetchChartData()
+  fetchHeatMapdata()
 
 
   },[])
@@ -100,6 +102,41 @@ const Dashboard = () => {
 
   }
 
+  const fetchHeatMapdata=async ()=>{
+    try {
+      
+       const data=await api.get('classification/heatmap/values',{params:{year:'2026'}})
+
+      if (data.data.success===true){
+          console.log(data.data)
+          setHeatPoints(data.data.cordinateHeat.map((val)=>{
+
+            const arrReturn=[]
+
+            arrReturn.push(parseFloat(val.xCord))
+            arrReturn.push(parseFloat(val.yCord))
+            arrReturn.push(parseFloat(val.intensity))
+
+            
+            return arrReturn
+
+
+
+          }))
+
+          console.log(heatPoints)
+
+      }
+
+
+    } catch (error) {
+
+      console.log(`Failed to get heat map data due to ${error}`)
+    }
+
+
+  }
+
   return (
     <>
       <CCard className="mb-4">
@@ -129,7 +166,7 @@ const Dashboard = () => {
             </CCol>
           </CRow>
           <CRow style={{height:"70vh"}}>
-          <HeatMap/>
+          <HeatMap HeatPoints={heatPoints}/>
           </CRow>
           
         </CCardBody>
