@@ -15,22 +15,10 @@ import {
 } from '@coreui/react'
 import { DocsComponents, DocsExample } from 'src/components'
 
-const Tables = () => {
+const Tables = ({Striped}) => {
   return (
-    <CRow>
-      <CCol xs={12}>
-        <DocsComponents href="components/table/" />
-        <CCard className="mb-4">
-          <CCardHeader>
-            <strong>React Table</strong> <small>Basic example</small>
-          </CCardHeader>
-          <CCardBody>
-            <p className="text-body-secondary small">
-              Using the most basic table CoreUI, here&#39;s how <code>&lt;CTable&gt;</code>-based
-              tables look in CoreUI.
-            </p>
-            <DocsExample href="components/table">
-              <CTable>
+
+              <CTable color='dark' striped={Striped}>
                 <CTableHead>
                   <CTableRow>
                     <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -59,11 +47,8 @@ const Tables = () => {
                   </CTableRow>
                 </CTableBody>
               </CTable>
-            </DocsExample>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow>
+
+    
   )
 }
 

@@ -14,9 +14,10 @@ const HeatMapCirc=({points})=>{
 
 
         const heatL= L.heatLayer(points,{
-            radius:50,
+            radius:25,
             blur:15,
-            max:20,
+            max:1,
+            minOpacity:0.8
         }).addTo(m)
 
         return()=>{
