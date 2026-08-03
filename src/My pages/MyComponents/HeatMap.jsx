@@ -8,7 +8,7 @@ import HeatMapCirc from "./heatMapCircle";
 //https://www.youtube.com/watch?v=jD6813wGdBA use this video link to go through the icon placement section later on
 
 
-const HeatMap =({HeatPoints})=>{
+const HeatMap =({HeatPoints,CenterCords})=>{
 
 
 return(
@@ -16,7 +16,7 @@ return(
 
 <>
 
-    <MapContainer center={[-26.181342628372175, 27.995090559304682]}zoom={14}
+    <MapContainer center={CenterCords}zoom={14}
     
         style={{height:"100%",width:"100%"}}
     >

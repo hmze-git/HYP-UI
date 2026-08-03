@@ -15,7 +15,7 @@
  */
 
 import React, { Suspense, useEffect } from 'react'
-import { BrowserRouter, HashRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, data, HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { CSpinner, useColorModes } from '@coreui/react'
@@ -30,8 +30,11 @@ import Login from './views/pages/login/Login'
 import Register from './views/pages/register/Register'
 import Page404 from './views/pages/page404/Page404'
 import Page500 from './views/pages/page500/Page500'
-import Dashboard from './views/dashboard/Dashboard' 
+import Dashboard from './views/dashboard/Dashboard'
 import UploadVideo from './My pages/uploadVideo'
+import api from './services/api'
+import { toast } from 'react-toastify'
+
 
 /**
  * Main Application Component
@@ -56,28 +59,31 @@ import UploadVideo from './My pages/uploadVideo'
  * ReactDOM.render(<App />, document.getElementById('root'))
  */
 const App = () => {
- const { setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
+  const { setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
 
   useEffect(() => {
     setColorMode('light')
   }, [])
 
+  
+
+
   return (
     <BrowserRouter>
-        <Routes>
-          <Route  path="/login" name="Login Page" element={<Login />} />
-          <Route  path="/register" name="Register Page" element={<Register />} />
-          <Route  path="/404" name="Page 404" element={<Page404 />} />
-          <Route  path="/500" name="Page 500" element={<Page500 />} />
-          <Route path='/' element={<DefaultLayout />} >
-            <Route index element={<Navigate to="dashboard" replace/>}/>
-            <Route path="dashboard" element={<Dashboard/>}/>
-            <Route path="vidUpload" element={<UploadVideo/>}/>
+      <Routes>
+        <Route path="/login" name="Login Page" element={<Login />} />
+        <Route path="/register" name="Register Page" element={<Register />} />
+        <Route path="/404" name="Page 404" element={<Page404 />} />
+        <Route path="/500" name="Page 500" element={<Page500 />} />
+        <Route path='/' element={<DefaultLayout />} >
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="vidUpload" element={<UploadVideo />} />
 
-            
 
-          </Route>
-        </Routes>
+
+        </Route>
+      </Routes>
     </BrowserRouter>
   )
 }

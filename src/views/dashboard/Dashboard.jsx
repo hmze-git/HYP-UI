@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 import classNames from 'classnames'
 
 import {
@@ -42,20 +42,21 @@ import {
   cilUser,
   cilUserFemale,
 } from '@coreui/icons'
-
 import avatar1 from 'src/assets/images/avatars/1.jpg'
 import avatar2 from 'src/assets/images/avatars/2.jpg'
 import avatar3 from 'src/assets/images/avatars/3.jpg'
 import avatar4 from 'src/assets/images/avatars/4.jpg'
 import avatar5 from 'src/assets/images/avatars/5.jpg'
 import avatar6 from 'src/assets/images/avatars/6.jpg'
-
+import React from 'react'
+import { useEffect,useState } from 'react'
 import WidgetsBrand from '../widgets/WidgetsBrand'
 import WidgetsDropdown from '../widgets/WidgetsDropdown'
 import MainChart from './MainChart'
 import api from '../../services/api'
 import HeatMap from '../../My pages/MyComponents/HeatMap'
 import Tables from '../../components/Tables'
+import { useLocation } from 'react-router-dom'
 
 const Dashboard = () => {
 
@@ -63,8 +64,9 @@ const Dashboard = () => {
   const [minorAccidentData, setMinorAccidentData] = useState([])
   const [moderateAccidentData, setModerateAccidentData] = useState([])
   const [heatPoints, setHeatPoints] = useState([])
+  const [centerCords,setCenterCords]=useState([-26.181342628372175, 27.995090559304682])
   const [tableData, setTableData] = useState([])
-
+  const location=useLocation()
   useEffect(() => {
 
 
@@ -104,6 +106,13 @@ const Dashboard = () => {
     }
 
   }
+  useEffect(()=>{
+    
+    if(!!location.state){
+    setCenterCords[parseFloat(location?.state?.xC),parseFloat(location?.state?.yC)]
+    }
+
+  },[location.state])
 
   const fetchHeatMapdata = async () => {
     try {
@@ -170,7 +179,7 @@ const Dashboard = () => {
 
 
       <CTableRow>
-        <CTableHeaderCell scope="row">{index}</CTableHeaderCell>
+        <CTableHeaderCell scope="row">{index+1}</CTableHeaderCell>
         <CTableDataCell>{val.locale}</CTableDataCell>
         <CTableDataCell>{val.minor}</CTableDataCell>
         <CTableDataCell>{val.moderate}</CTableDataCell>
@@ -208,11 +217,11 @@ const Dashboard = () => {
               <div className="small text-body-secondary">July 2026</div>
             </CCol>
           </CRow>
-          <CRow style={{ height: "70vh" }}>
-            <CCol sm={5}>
-            <HeatMap HeatPoints={heatPoints} />
+          <CRow >
+            <CCol lg={7}>
+            <HeatMap HeatPoints={heatPoints} CenterCords={centerCords} />
             </CCol>
-                 <CCol sm={5}>
+                 <CCol lg={5}>
             <CTable color='dark' striped>
                 <CTableHead>
                   <CTableRow>
