@@ -222,7 +222,7 @@ const Dashboard = () => {
             <HeatMap HeatPoints={heatPoints} CenterCords={centerCords} />
             </CCol>
                  <CCol lg={5}>
-            <CTable color='dark' striped>
+            <CTable  striped>
                 <CTableHead>
                   <CTableRow>
                     <CTableHeaderCell scope="col">#</CTableHeaderCell>

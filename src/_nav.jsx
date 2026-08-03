@@ -100,8 +100,8 @@ const _nav = [
   },
     {
     component: CNavItem,
-    name: 'Metrics',
-    to: '#',
+    name: 'Processed Videos',
+    to: '/processedVideos',
     icon: <CIcon icon={cilBarChart} customClassName="nav-icon" />,
   },
 

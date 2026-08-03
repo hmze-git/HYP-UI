@@ -149,9 +149,9 @@ const submitVideo = async ()=>{
                                    {!!selectedPipeline?selectedPipeline:"Select A Pipeline"}
                                 </CDropdownToggle>
                                 <CDropdownMenu>
-                                    <CDropdownItem onClick={()=>setThePipeline("LCNN")}>LSTM-CNN (P1)</CDropdownItem>
-                                    <CDropdownItem onClick={()=>setThePipeline("DCNN")}>D-CNN (P2)</CDropdownItem>
-                                    <CDropdownItem onClick={()=>setThePipeline("ViT")}>ViT (P3)</CDropdownItem>
+                                    <CDropdownItem onClick={()=>setThePipeline("LibLSTMCNN")}>LIB LSTM-CNN (P1)</CDropdownItem>
+                                    <CDropdownItem onClick={()=>setThePipeline("NLibLSTMCNN")}>No Lib LSTM-CNN(P2)</CDropdownItem>
+
                                 </CDropdownMenu>
                             </CDropdown>
                             <CFormInput aria-label="Text input with dropdown button" />

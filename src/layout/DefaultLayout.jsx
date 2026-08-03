@@ -21,8 +21,10 @@
 
 import React from 'react'
 import { AppContent, AppSidebar, AppFooter, AppHeader } from '../components/index'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import api from '../services/api'
+import { toast } from 'react-toastify'
 
 /**
  * DefaultLayout functional component
@@ -57,7 +59,7 @@ useEffect(() => {
       const data=await api.post('video/random/upload',body)
      
       if (data.data.success === true) {
-           toast(renderAccidentNoti(data.data.localName,data.data.AType,data.data.xCord,data.data.yCord), {
+        toast(renderAccidentNoti(data.data.localName,data.data.AType,data.data.xCord,data.data.yCord,data.data.vidId), {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -68,7 +70,7 @@ useEffect(() => {
         theme: "light",
       });
       }
-    }, 300000000000); //5 min wait 300000
+    }, 300000); //5 min wait 300000
 
     return () => clearInterval(interval);
 
@@ -80,14 +82,14 @@ useEffect(() => {
 
 
   }
-  const renderAccidentNoti=(aLocation,aType,xCord,yCord)=>{
+  const renderAccidentNoti=(aLocation,aType,xCord,yCord,vidId)=>{
 
     return(
   <div className="alert alert-warning" role="alert">
     <h4 className="alert-heading">Incoming Accident Event</h4>
      <p className="mb-0">Location is : {aLocation}</p>
      <p className="mb-0">System Predicts Accident is {aType}</p>
-     <p className="mb-0"><button class="alert-link" onClick={()=>handleButtonClick(xCord,yCord,aType)}>Click Here To View In Map</button>.</p>
+     <p className="mb-0"><Link to={`/viewVideo/${vidId}`} state={{vId:vidId}}>Click Here To View</Link></p>
 
   </div>
 

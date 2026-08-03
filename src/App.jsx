@@ -32,8 +32,11 @@ import Page404 from './views/pages/page404/Page404'
 import Page500 from './views/pages/page500/Page500'
 import Dashboard from './views/dashboard/Dashboard'
 import UploadVideo from './My pages/uploadVideo'
+import ViewProcessedVideo from './My pages/viewProcessedVideo'
+import ViewAllVids from './My pages/viewAllVideos'
 import api from './services/api'
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
+
 
 
 /**
@@ -65,11 +68,23 @@ const App = () => {
     setColorMode('light')
   }, [])
 
-  
+
 
 
   return (
     <BrowserRouter>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Routes>
         <Route path="/login" name="Login Page" element={<Login />} />
         <Route path="/register" name="Register Page" element={<Register />} />
@@ -79,6 +94,8 @@ const App = () => {
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="vidUpload" element={<UploadVideo />} />
+          <Route path="processedVideos" element={<ViewAllVids />} />
+          <Route path="viewVideo/:vId" element={<ViewProcessedVideo />} />
 
 
 
