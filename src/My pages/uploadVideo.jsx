@@ -151,6 +151,7 @@ const submitVideo = async ()=>{
                                 <CDropdownMenu>
                                     <CDropdownItem onClick={()=>setThePipeline("LibLSTMCNN")}>LIB LSTM-CNN (P1)</CDropdownItem>
                                     <CDropdownItem onClick={()=>setThePipeline("NLibLSTMCNN")}>No Lib LSTM-CNN(P2)</CDropdownItem>
+                                    <CDropdownItem onClick={()=>setThePipeline("LibVIT")}>Lib ViT(P3)</CDropdownItem>
 
                                 </CDropdownMenu>
                             </CDropdown>

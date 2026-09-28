@@ -41,7 +41,7 @@ const MainChart = ({major,moderate,minor,label}) => {
         ref={chartRef}
         style={{ height: '300px', marginTop: '40px' }}
         data={{
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+          labels:  ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
           datasets: [
             {
               label: label[0],

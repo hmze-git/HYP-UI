@@ -197,7 +197,7 @@ const Dashboard = () => {
               <h4 id="traffic" className="card-title mb-0">
                 Accident Severity Classifications
               </h4>
-              <div className="small text-body-secondary">January - July 2026</div>
+              <div className="small text-body-secondary">January - September 2026</div>
             </CCol>
           </CRow>
           <MainChart major={majorAccidentData} moderate={moderateAccidentData} minor={minorAccidentData} label={lineData} />
@@ -214,7 +214,7 @@ const Dashboard = () => {
               <h4 id="traffic" className="card-title mb-0">
                 Heatmap of accident hotspots (Severity And Frequency)
               </h4>
-              <div className="small text-body-secondary">July 2026</div>
+              <div className="small text-body-secondary">January-September 2026</div>
             </CCol>
           </CRow>
           <CRow >

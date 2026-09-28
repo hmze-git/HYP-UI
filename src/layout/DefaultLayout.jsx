@@ -49,11 +49,11 @@ useEffect(() => {
 
     const interval = setInterval(async () => {
 
-      const values = ["C:\\Users\\Hamzah\\Desktop\\HYP\\archive\\Balanced Accident Video Dataset\\test\\major", "C:\\Users\\Hamzah\\Desktop\\HYP\\archive\\Balanced Accident Video Dataset\\test\\minor", "C:\\Users\\Hamzah\\Desktop\\HYP\\archive\\Balanced Accident Video Dataset\\test\\moderate"];
+      const values = ["C:\\Users\\Hamzah\\Desktop\\HYP\\Dataset\\archive\\ToProcess\\test\\major", "C:\\Users\\Hamzah\\Desktop\\HYP\\Dataset\\archive\\ToProcess\\test\\minor", "C:\\Users\\Hamzah\\Desktop\\HYP\\Dataset\\archive\\ToProcess\\test\\moderate"];
       const randomValue = values[Math.floor(Math.random() * values.length)];
       const body = {
         "datasetPath": randomValue,
-        "pipeType": "LibLSTMCNN"
+        "pipeType": "LibVIT"
       }
 
       const data=await api.post('video/random/upload',body)
@@ -61,7 +61,7 @@ useEffect(() => {
       if (data.data.success === true) {
         toast(renderAccidentNoti(data.data.localName,data.data.AType,data.data.xCord,data.data.yCord,data.data.vidId), {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: false,
         hideProgressBar: false,
         closeOnClick: false,
         pauseOnHover: true,
@@ -70,7 +70,7 @@ useEffect(() => {
         theme: "light",
       });
       }
-    }, 300000); //5 min wait 300000
+    }, 120000); //5 min wait 300000
 
     return () => clearInterval(interval);
 
